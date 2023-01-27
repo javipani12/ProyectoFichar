@@ -11,6 +11,8 @@ import modelos.Departamento;
 import modelos.Departamentos;
 import modelos.Empleado;
 import modelos.Empleados;
+import modelos.Ficha;
+import modelos.Fichas;
 
 /**
  *
@@ -21,16 +23,18 @@ public class EmpresaGUI extends javax.swing.JFrame {
     // Objeto para conectarno a la BD
     GestionBD conexion;
 
-    // Listados de empleados y departamentos
+    // Listados de Empleados, Departamentos y Fichas
     Departamentos listaDepartamentos;
     Empleados listaEmpleados;
+    Fichas listaFichas;
 
-    // Modelo JList de Departamentos y Empleados
+    // Modelo JList de Departamentos, Empleados y Fichas
     DefaultListModel modeloJlistDptos;
     DefaultListModel modeloJlistEmpleados;
+    DefaultListModel modeloJlistFichar;
     
     // Modelo ComboBox para Empleados
-    DefaultComboBoxModel modeloComboDepartamentosEmp;
+    DefaultComboBoxModel modeloComboDepartamentosEmp;    
 
     /**
      * Creates new form Interfaz
@@ -39,11 +43,14 @@ public class EmpresaGUI extends javax.swing.JFrame {
         // Inicializamos los datos de Modelos
         modeloJlistDptos = new DefaultListModel();
         modeloJlistEmpleados = new DefaultListModel();
+        modeloJlistFichar = new DefaultListModel();
         modeloComboDepartamentosEmp = new DefaultComboBoxModel();
 
-        // Inicializamos listado de departamentos y empleados
+        // Inicializamos listado de Departamentos, Empleados y Fichas
         listaDepartamentos = new Departamentos();
         listaEmpleados = new Empleados();
+        listaFichas = new Fichas();
+        
 
         // Creamos la conexión a la BD
         conexion = new GestionBD("localhost", "javier",
@@ -56,6 +63,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
         
         cargarDepartamentos();
         cargarEmpleados();
+        cargarFichas();
         
         initComponents();
 
@@ -70,6 +78,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botonesTipoFichado = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         TabEmpleados = new javax.swing.JPanel();
         PanelListadoEmpleados = new javax.swing.JPanel();
@@ -103,6 +112,21 @@ public class EmpresaGUI extends javax.swing.JFrame {
         BtGuardarDpto = new javax.swing.JButton();
         BtNuevoDpto = new javax.swing.JButton();
         BtBorrarDpto = new javax.swing.JButton();
+        TabFichas = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldIDFicha = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextFieldNombreEmpleado = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jRadioButtonEntrada = new javax.swing.JRadioButton();
+        jRadioButtonSalida = new javax.swing.JRadioButton();
+        jButtonGuardarFicha = new javax.swing.JButton();
+        jButtonNuevaFicha = new javax.swing.JButton();
+        jButtonBorrarFicha = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -254,7 +278,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
                 .addComponent(PanelListadoEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PanelDetalleEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         TabEmpleadosLayout.setVerticalGroup(
             TabEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,7 +400,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
                 .addComponent(PanelListadoDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PanelDetalleDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         TabDepartamentosLayout.setVerticalGroup(
             TabDepartamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,6 +416,126 @@ public class EmpresaGUI extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Departamentos", TabDepartamentos);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado:"));
+
+        jList1.setModel(modeloJlistFichar);
+        jScrollPane3.setViewportView(jList1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalles:"));
+
+        jLabel9.setText("ID Ficha:");
+
+        jTextFieldIDFicha.setEditable(false);
+        jTextFieldIDFicha.setEnabled(false);
+        jTextFieldIDFicha.setMinimumSize(new java.awt.Dimension(40, 22));
+        jTextFieldIDFicha.setPreferredSize(new java.awt.Dimension(40, 22));
+
+        jLabel10.setText("Nombre Empleado:");
+
+        jTextFieldNombreEmpleado.setMinimumSize(new java.awt.Dimension(130, 22));
+        jTextFieldNombreEmpleado.setPreferredSize(new java.awt.Dimension(130, 22));
+
+        jLabel11.setText("Tipo de Fichado");
+
+        jRadioButtonEntrada.setText("Entrada");
+
+        jRadioButtonSalida.setText("Salida");
+
+        jButtonGuardarFicha.setText("GUARDAR");
+
+        jButtonNuevaFicha.setText("NUEVO");
+
+        jButtonBorrarFicha.setText("BORRAR");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldIDFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextFieldNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jRadioButtonEntrada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButtonSalida))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonGuardarFicha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonNuevaFicha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonBorrarFicha)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldIDFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonEntrada)
+                    .addComponent(jRadioButtonSalida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonBorrarFicha)
+                    .addComponent(jButtonNuevaFicha)
+                    .addComponent(jButtonGuardarFicha))
+                .addGap(15, 15, 15))
+        );
+
+        javax.swing.GroupLayout TabFichasLayout = new javax.swing.GroupLayout(TabFichas);
+        TabFichas.setLayout(TabFichasLayout);
+        TabFichasLayout.setHorizontalGroup(
+            TabFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TabFichasLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        TabFichasLayout.setVerticalGroup(
+            TabFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TabFichasLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(TabFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Fichas", TabFichas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -540,7 +684,14 @@ public class EmpresaGUI extends javax.swing.JFrame {
     private javax.swing.JPanel PanelListadoEmpleados;
     private javax.swing.JPanel TabDepartamentos;
     private javax.swing.JPanel TabEmpleados;
+    private javax.swing.JPanel TabFichas;
+    private javax.swing.ButtonGroup botonesTipoFichado;
+    private javax.swing.JButton jButtonBorrarFicha;
+    private javax.swing.JButton jButtonGuardarFicha;
+    private javax.swing.JButton jButtonNuevaFicha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -548,11 +699,20 @@ public class EmpresaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jListDpto;
     private javax.swing.JList<String> jListEmpleados;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButtonEntrada;
+    private javax.swing.JRadioButton jRadioButtonSalida;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextFieldIDFicha;
+    private javax.swing.JTextField jTextFieldNombreEmpleado;
     private javax.swing.JSpinner spinnerEmpleadoSalario;
     // End of variables declaration//GEN-END:variables
 
@@ -753,5 +913,36 @@ public class EmpresaGUI extends javax.swing.JFrame {
             jListEmpleados.setSelectedIndex(listaEmpleados.size() - 1);
         }
     }
+
+    
+    // --------------- MÉTODOS FICHAS ----------------- //
+    
+    private void cargarFichas() {
+        // Limpiamos el listado de Fichas
+        modeloJlistFichar.clear();
+        
+        // Actualizamos la lista de Fichas
+        listaFichas = conexion.listarFichas();
+        
+        String entradaSalida, valorMostrar;
+        // Recogemos cada ficha y la introducimos en el listado
+        for (Ficha ficha : listaFichas.getListaFichas()) {
+            
+            // Comprobamos si la ficha ha sido de entrada o salida
+            if (ficha.isEntrada()) {
+                entradaSalida = "Entrada";
+            } else {
+                entradaSalida = "Salida";
+            }
+            
+            // Creamos el valor que se mostrará en la lista
+            valorMostrar = ficha.getEmpleado().getNombre() + " - " +
+                    " - " + entradaSalida + " - " + ficha.getFechaFicha();
+            
+            // Lo añadimos al listado
+            modeloJlistFichar.addElement(valorMostrar);
+        }
+    }
+
     
 }

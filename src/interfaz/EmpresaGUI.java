@@ -7,7 +7,6 @@ import modelos.Departamento;
 import modelos.Departamentos;
 import modelos.Empleado;
 import modelos.Empleados;
-import modelos.Fichas;
 
 /**
  *
@@ -21,7 +20,6 @@ public class EmpresaGUI extends javax.swing.JFrame {
     // Listados de Empleados, Departamentos y Fichas
     Departamentos listaDepartamentos;
     Empleados listaEmpleados;
-    Fichas listaFichas;
 
     // Modelo JList de Departamentos, Empleados y Fichas
     DefaultListModel modeloJlistDptos;
@@ -44,7 +42,6 @@ public class EmpresaGUI extends javax.swing.JFrame {
         // Inicializamos listado de Departamentos, Empleados y Fichas
         listaDepartamentos = new Departamentos();
         listaEmpleados = new Empleados();
-        listaFichas = new Fichas();
         
 
         // Creamos la conexión a la BD
@@ -495,6 +492,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
         emp.setSalario(Float.parseFloat(spinnerEmpleadoSalario.getValue().toString()));
         emp.setEmail(JTexFieldEmpleadoEmail.getText());
         emp.setDpt(listaDepartamentos.getDepartamentoBis(CbEmpleadosDpto.getSelectedIndex()));
+        emp.setCodigoEmp(Integer.parseInt(jTextFieldEmpleadoCodigo.getText()));
         
         guardarEmpleado(emp);
     }//GEN-LAST:event_BtGuardarEmpleadoActionPerformed
@@ -720,6 +718,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
             spinnerEmpleadoSalario.setValue(emp.getSalario());
             JTexFieldEmpleadoEmail.setText(emp.getEmail());
             CbEmpleadosDpto.setSelectedItem(emp.getDpt().getNombre());
+            jTextFieldEmpleadoCodigo.setText(String.valueOf(emp.getCodigoEmp()));
         }
     }
     
@@ -733,6 +732,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
         spinnerEmpleadoSalario.setValue(1017);
         JTexFieldEmpleadoEmail.setText("");
         CbEmpleadosDpto.setSelectedItem(null);
+        jTextFieldEmpleadoCodigo.setText("");
     }
 
     /**

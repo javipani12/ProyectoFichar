@@ -1,15 +1,10 @@
 package BD;
 
-import com.mysql.cj.protocol.Resultset;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelos.Departamento;
 import modelos.Departamentos;
 import modelos.Empleado;
 import modelos.Empleados;
-import modelos.Ficha;
-import modelos.Fichas;
 
 /**
  *
@@ -479,14 +474,14 @@ public class GestionBD {
      * @return boolean - Devuelve true si el código coincide con el ID del
      * Empleado, en caso contrario false.
      */
-    public boolean comprobarCodigo(int codigo, String nombre){
-        boolean encontrado = false;
+    public int comprobarCodigo(int codigo, String nombre){
+        int idEmpleado = 0;
         
         conectar();
         
         try {
             PreparedStatement ps = this.conexion.prepareStatement(
-                    "SELECT * FROM empleados WHERE nombre = ?"
+                    "SELECT idEmpleado FROM empleados WHERE nombre = ?"
                             + " AND codigoEmp = ? "
             );
             
@@ -496,7 +491,7 @@ public class GestionBD {
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
-                encontrado = true;
+                idEmpleado = rs.getInt("idEmpleado");
             }
             
             
@@ -508,7 +503,7 @@ public class GestionBD {
         
         desconectar();
         
-        return encontrado;
+        return idEmpleado;
     }
     
     

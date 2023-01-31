@@ -5,11 +5,11 @@ import modelos.Departamento;
 import modelos.Departamentos;
 import modelos.Empleado;
 import modelos.Empleados;
-import modelos.Ficha;
 import java.util.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.Month;
+import modelos.Ficha;
 
 /**
  *

@@ -472,49 +472,6 @@ public class GestionBD {
     }
     
     /**
-     * Método para buscar un empleado mediante su nombre
-     * @param nombreEmp - int - id del empleado a buscar
-     * @return Empleado - Si encuentra el empleado indicado
-     * nos devuelve todos sus datos, en caso contrario nos devuelve un 
-     * empleado nulo
-     */
-    public Empleado buscarEmpleado(String nombreEmp){
-        
-        Empleado emp = new Empleado();
-        Departamentos depts = new Departamentos();
-        
-        conectar();
-        
-        try {
-            PreparedStatement ps = this.conexion.prepareStatement(
-                    "SELECT * FROM empleados WHERE nombre = ?"
-            );
-            
-            ps.setString(1, nombreEmp);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()) {
-                emp.setIdEmpleado(rs.getInt(1));
-                emp.setNombre(rs.getString(2));
-                emp.setApellido(rs.getString(3));
-                emp.setSalario(rs.getFloat(4));
-                emp.setEmail(rs.getString(5));
-                emp.setDpt(depts.getDepartamento(rs.getInt(6)));
-                emp.setCodigoEmp(rs.getInt(7));
-            }
-            
-            desconectar();
-            
-        } catch (SQLException ex) {
-            System.err.println("Se ha producido un error");
-        }
-        
-        return emp;
-        
-    }
-    
-    /**
      * Método para comprobar si el código del Empleado que está intentado
      * loguearse es correcto
      * @param codigo - Código de acceso del Empleado 
@@ -529,12 +486,12 @@ public class GestionBD {
         
         try {
             PreparedStatement ps = this.conexion.prepareStatement(
-                    "SELECT * FROM empleados WHERE nombre = ? "
-                            + "AND idEmpleado = ?"
+                    "SELECT * FROM empleados WHERE nombre = ?"
+                            + " AND codigoEmp = ? "
             );
             
             ps.setString(1, nombre);
-            ps.setInt(2, buscarEmpleado(nombre).getIdEmpleado());
+            ps.setInt(2, codigo);
             
             ResultSet rs = ps.executeQuery();
             
@@ -560,10 +517,13 @@ public class GestionBD {
     
     /**
      * Método para insertar un Ficha de entrada en la tabla fichar
-     * @param ficha Ficha - Ficha que queremos insertar en la BD
-     * @return boolean - Devuelve true si se ha insertado, 
+     * @param empleado Empleado - Empleado al que queremos crear una Ficha
+     * en la BD
+     * @param hora Timestamp - Hora que tendrá la ficha
+     * @return boolean - Devuelve true si se ha insertado, false en caso
+     * contrario.
      */
-    public boolean insertarFichaEntrada(Ficha ficha) {
+    public boolean insertarFichaEntrada(Empleado empleado, Timestamp hora) {
         boolean insertado = false;
         
         // Nos conectamos a la BD
@@ -577,8 +537,8 @@ public class GestionBD {
             );
             
             // Enlazamos los valores a la sentencia en su posición correspondiente
-            ps.setInt(1, ficha.getEmpleado().getIdEmpleado());
-            ps.setTimestamp(2, ficha.getFechaFicha());
+            ps.setInt(1, empleado.getIdEmpleado());
+            ps.setTimestamp(2, hora);
             
             // Ejecutamos la sentencia
             if( ps.execute() ) {
@@ -597,10 +557,13 @@ public class GestionBD {
     
     /**
      * Método para insertar un Ficha de salida en la tabla fichar
-     * @param ficha Ficha - Ficha que queremos insertar en la BD
-     * @return boolean - Devuelve true si se ha insertado, 
+     * @param empleado Empleado - Empleado al que queremos insertar una ficha
+     * en la BD
+     * @param hora Timestamp - Hora que tendrá la ficha
+     * @return boolean - Devuelve true si se ha insertado, false en caso 
+     * contrario.
      */
-    public boolean insertarFichaSalida(Ficha ficha) {
+    public boolean insertarFichaSalida(Empleado empleado, Timestamp hora) {
         boolean insertado = false;
         
         // Nos conectamos a la BD
@@ -614,8 +577,8 @@ public class GestionBD {
             );
             
             // Enlazamos los valores a la sentencia en su posición correspondiente
-            ps.setInt(1, ficha.getEmpleado().getIdEmpleado());
-            ps.setTimestamp(2, ficha.getFechaFicha());
+            ps.setInt(1, empleado.getIdEmpleado());
+            ps.setTimestamp(2, hora);
             
             // Ejecutamos la sentencia
             if( ps.execute() ) {
@@ -630,123 +593,6 @@ public class GestionBD {
         }
         
         return insertado;
-    }
-    
-    public boolean modificarFicha( Ficha fichaOld, Ficha fichaNew ) {
-        
-        boolean modificado = false;
-        
-        conectar();
-        
-        try {
-            PreparedStatement ps = this.conexion.prepareStatement(
-                    "UPDATE fichar "
-                            + "SET idEmpleado = ?, entrada = ?, salida = ? "
-                            + "WHERE idFicha = ?"
-            );
-            
-            ps.setInt(1, fichaNew.getIdFicha());
-            ps.setBoolean(2, fichaNew.isEntrada());
-            ps.setBoolean(3, fichaNew.isSalida());
-            ps.setInt(4, fichaOld.getIdFicha());
-            
-            if (ps.execute()) {
-                modificado = true;
-            }
-            
-            desconectar();
-            
-        } catch (SQLException ex) {
-            System.err.println("Se ha producido un error al actualizar, " + ex.getMessage());
-        }
-        
-        return modificado;
-        
-    }
-    
-    /**
-     * Método para borrar un ficha de la BD
-     * @param ficha Ficha - Ficha que queremos borrar de la BD
-     * @return boolean - Nos devuelve true si logra borrar la ficha de la BD,
-     * en caso contrario false
-     */
-    public boolean borrarFicha(Ficha ficha){
-        boolean borrado = false;
-        
-        conectar();
-        
-        try {
-            PreparedStatement ps = this.conexion.prepareStatement(
-                    "DELETE FROM fichar WHERE idFicha = ?"
-            );
-            
-            ps.setInt(1, ficha.getIdFicha());
-            
-            if (ps.execute()) {
-                borrado = ps.execute();
-            }
-            
-            desconectar();
-            
-        } catch (SQLException ex) {
-            System.err.println("Se ha producido un error al borrar, " + ex.getMessage());
-        }
-        
-        return borrado;
-    }
-    
-    /**
-     * Método para obtener todas de la BD
-     * @return Fichas - Nos devuelve un objeto de tipo Fichas, que en sí es
-     * un listado de fichas
-     */
-    public Fichas listarFichas(){
-        Fichas listaFichas = new Fichas();
-        
-        conectar();
-        
-        try {
-            PreparedStatement ps = this.conexion.prepareStatement(
-                    "SELECT * FROM fichar f INNER JOIN empleados e "
-                            + " ON f.idEmpleado = e.idEmpleado "
-                            + "INNER JOIN Departamentos d "
-                            + "ON e.idDepartamento = d.idDepartamento"
-            );
-            
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()) {
-                Ficha ficha = new Ficha();
-                Empleado emp = new Empleado();
-                Departamento dep = new Departamento();
-                
-                dep.setIdDepartamento(rs.getInt(13));
-                dep.setNombre(rs.getString(14));
-                
-                emp.setIdEmpleado(rs.getInt(6));
-                emp.setNombre(rs.getString(7));
-                emp.setApellido(rs.getString(8));
-                emp.setSalario(rs.getFloat(9));
-                emp.setEmail(rs.getString(10));
-                emp.setDpt(dep);
-                emp.setCodigoEmp(rs.getInt(12));
-                
-                ficha.setIdFicha(rs.getInt(1));
-                ficha.setEmpleado(emp);
-                ficha.setEntrada(rs.getBoolean(3));
-                ficha.setSalida(rs.getBoolean(4));
-                ficha.setFechaFicha(rs.getTimestamp(5));
-                
-                
-                listaFichas.annadirFicha(ficha);
-            }
-            
-            desconectar();
-        } catch (SQLException ex) {
-            System.err.println("Se ha producido un error al recoger los datos, " + ex.getMessage());
-        }  
-        
-        return listaFichas;
     }
     
     // ------------------ MÉTODO FECHA Y HORA SERVIDOR ---------------//

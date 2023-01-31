@@ -43,8 +43,6 @@ public class Pruebas {
 //        gestionBD.insertarDepartamento(departamento2);
 //        gestionBD.insertarEmpleado(empleado);
 //        gestionBD.insertarEmpleado(empleado2);
-//        gestionBD.insertarFichaEntrada(ficha1_1);
-        gestionBD.insertarFichaSalida(ficha1_2);
     }
     
 }

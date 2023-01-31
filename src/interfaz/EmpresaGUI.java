@@ -7,7 +7,6 @@ import modelos.Departamento;
 import modelos.Departamentos;
 import modelos.Empleado;
 import modelos.Empleados;
-import modelos.Ficha;
 import modelos.Fichas;
 
 /**
@@ -59,7 +58,6 @@ public class EmpresaGUI extends javax.swing.JFrame {
         
         cargarDepartamentos();
         cargarEmpleados();
-        cargarFichas();
         
         initComponents();
 
@@ -95,6 +93,8 @@ public class EmpresaGUI extends javax.swing.JFrame {
         CbEmpleadosDpto = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         spinnerEmpleadoSalario = new javax.swing.JSpinner();
+        jLabelEmpleadoCodigo = new javax.swing.JLabel();
+        jTextFieldEmpleadoCodigo = new javax.swing.JTextField();
         TabDepartamentos = new javax.swing.JPanel();
         PanelListadoDepartamentos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,20 +107,6 @@ public class EmpresaGUI extends javax.swing.JFrame {
         BtGuardarDpto = new javax.swing.JButton();
         BtNuevoDpto = new javax.swing.JButton();
         BtBorrarDpto = new javax.swing.JButton();
-        TabFichas = new javax.swing.JPanel();
-        PanelListadoFichas = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jListFichas = new javax.swing.JList<>();
-        PanelDetalleFicha = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextFieldFichaID = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextFieldFichaNombreEmpleado = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jButtonGuardarFicha = new javax.swing.JButton();
-        jButtonNuevaFicha = new javax.swing.JButton();
-        jButtonBorrarFicha = new javax.swing.JButton();
-        jTextFieldFichaTipoFichado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,6 +180,11 @@ public class EmpresaGUI extends javax.swing.JFrame {
 
         spinnerEmpleadoSalario.setModel(new javax.swing.SpinnerNumberModel(1017, 1017, null, 10));
 
+        jLabelEmpleadoCodigo.setText("Código");
+
+        jTextFieldEmpleadoCodigo.setMinimumSize(new java.awt.Dimension(72, 22));
+        jTextFieldEmpleadoCodigo.setPreferredSize(new java.awt.Dimension(72, 22));
+
         javax.swing.GroupLayout PanelDetalleEmpleadosLayout = new javax.swing.GroupLayout(PanelDetalleEmpleados);
         PanelDetalleEmpleados.setLayout(PanelDetalleEmpleadosLayout);
         PanelDetalleEmpleadosLayout.setHorizontalGroup(
@@ -209,9 +200,14 @@ public class EmpresaGUI extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addComponent(BtGuardarEmpleado)))
                         .addGap(18, 18, 18)
-                        .addComponent(BtNuevoEmpleado)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtBorrarEmpleado))
+                        .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelEmpleadoCodigo)
+                            .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
+                                .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldEmpleadoCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtNuevoEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(BtBorrarEmpleado))))
                     .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,9 +248,13 @@ public class EmpresaGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JTexFieldEmpleadoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabelEmpleadoCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CbEmpleadosDpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CbEmpleadosDpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEmpleadoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtGuardarEmpleado)
@@ -411,141 +411,6 @@ public class EmpresaGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Departamentos", TabDepartamentos);
 
-        PanelListadoFichas.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado:"));
-
-        jListFichas.setModel(modeloJlistFichar);
-        jListFichas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jListFichasValueChanged(evt);
-            }
-        });
-        jScrollPane3.setViewportView(jListFichas);
-
-        javax.swing.GroupLayout PanelListadoFichasLayout = new javax.swing.GroupLayout(PanelListadoFichas);
-        PanelListadoFichas.setLayout(PanelListadoFichasLayout);
-        PanelListadoFichasLayout.setHorizontalGroup(
-            PanelListadoFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelListadoFichasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        PanelListadoFichasLayout.setVerticalGroup(
-            PanelListadoFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelListadoFichasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-        );
-
-        PanelDetalleFicha.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalles:"));
-
-        jLabel9.setText("ID Ficha:");
-
-        jTextFieldFichaID.setEditable(false);
-        jTextFieldFichaID.setEnabled(false);
-        jTextFieldFichaID.setMinimumSize(new java.awt.Dimension(40, 22));
-        jTextFieldFichaID.setPreferredSize(new java.awt.Dimension(40, 22));
-
-        jLabel10.setText("Nombre Empleado:");
-
-        jTextFieldFichaNombreEmpleado.setMinimumSize(new java.awt.Dimension(130, 22));
-        jTextFieldFichaNombreEmpleado.setPreferredSize(new java.awt.Dimension(130, 22));
-
-        jLabel11.setText("Tipo de Fichado");
-
-        jButtonGuardarFicha.setText("GUARDAR");
-        jButtonGuardarFicha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardarFichaActionPerformed(evt);
-            }
-        });
-
-        jButtonNuevaFicha.setText("NUEVO");
-        jButtonNuevaFicha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevaFichaActionPerformed(evt);
-            }
-        });
-
-        jButtonBorrarFicha.setText("BORRAR");
-        jButtonBorrarFicha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBorrarFichaActionPerformed(evt);
-            }
-        });
-
-        jTextFieldFichaTipoFichado.setMinimumSize(new java.awt.Dimension(131, 22));
-        jTextFieldFichaTipoFichado.setPreferredSize(new java.awt.Dimension(131, 22));
-
-        javax.swing.GroupLayout PanelDetalleFichaLayout = new javax.swing.GroupLayout(PanelDetalleFicha);
-        PanelDetalleFicha.setLayout(PanelDetalleFichaLayout);
-        PanelDetalleFichaLayout.setHorizontalGroup(
-            PanelDetalleFichaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDetalleFichaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelDetalleFichaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldFichaID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addGroup(PanelDetalleFichaLayout.createSequentialGroup()
-                        .addComponent(jButtonGuardarFicha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonNuevaFicha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonBorrarFicha))
-                    .addGroup(PanelDetalleFichaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextFieldFichaTipoFichado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldFichaNombreEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        PanelDetalleFichaLayout.setVerticalGroup(
-            PanelDetalleFichaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDetalleFichaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldFichaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldFichaNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldFichaTipoFichado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
-                .addGroup(PanelDetalleFichaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBorrarFicha)
-                    .addComponent(jButtonNuevaFicha)
-                    .addComponent(jButtonGuardarFicha))
-                .addGap(15, 15, 15))
-        );
-
-        javax.swing.GroupLayout TabFichasLayout = new javax.swing.GroupLayout(TabFichas);
-        TabFichas.setLayout(TabFichasLayout);
-        TabFichasLayout.setHorizontalGroup(
-            TabFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TabFichasLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(PanelListadoFichas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PanelDetalleFicha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        TabFichasLayout.setVerticalGroup(
-            TabFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TabFichasLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(TabFichasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelDetalleFicha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelListadoFichas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Fichas", TabFichas);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -634,55 +499,6 @@ public class EmpresaGUI extends javax.swing.JFrame {
         guardarEmpleado(emp);
     }//GEN-LAST:event_BtGuardarEmpleadoActionPerformed
 
-    private void jListFichasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListFichasValueChanged
-        mostrarDatosFichas(jListFichas.getSelectedIndex());
-    }//GEN-LAST:event_jListFichasValueChanged
-
-    private void jButtonNuevaFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaFichaActionPerformed
-        limpiarDetallesFichas();
-    }//GEN-LAST:event_jButtonNuevaFichaActionPerformed
-
-    private void jButtonBorrarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarFichaActionPerformed
-        // Creamos un objeto Ficha
-        Ficha ficha = new Ficha();
-        
-        // Asignamos los valores de la interfaz
-        // Comprobamos que el ID existe
-        if (!jTextFieldFichaID.getText().isBlank()) {
-            ficha.setIdFicha(Integer.parseInt(jTextFieldFichaID.getText()));
-        }
-        
-        // Usamos el método para borrar la ficha
-        borrarFicha(ficha);
-    }//GEN-LAST:event_jButtonBorrarFichaActionPerformed
-
-    private void jButtonGuardarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarFichaActionPerformed
-        // Creamos un objeto empleado
-        Ficha ficha = new Ficha();
-        
-        if (!jTextFieldFichaID.getText().isBlank()) {
-            ficha.setIdFicha(Integer.parseInt(jTextFieldFichaID.getText()));
-        }
-        
-        // Comprobamos el tipo de ficha y asignamos valores
-        if (jTextFieldFichaTipoFichado.getText().equalsIgnoreCase("entrada")) {
-            ficha.setEntrada(true);
-            ficha.setSalida(false);
-        } else if (jTextFieldFichaTipoFichado.getText().equalsIgnoreCase("salida")) {
-            ficha.setEntrada(false);
-            ficha.setSalida(true);
-        }
-        
-        // Obtenemos el id de la ficha mediante el campo del nombre 
-        try {
-            ficha.getEmpleado().setIdEmpleado(conexion.buscarEmpleado(jTextFieldFichaNombreEmpleado.getText()).getIdEmpleado());
-        } catch (Exception ex) {
-            System.err.println("Error: " + ex.getMessage());
-        }
-        
-        guardarFicha(ficha);
-    }//GEN-LAST:event_jButtonGuardarFichaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -741,19 +557,11 @@ public class EmpresaGUI extends javax.swing.JFrame {
     private javax.swing.JTextField JTexFieldEmpleadoNombre;
     private javax.swing.JPanel PanelDetalleDepartamento;
     private javax.swing.JPanel PanelDetalleEmpleados;
-    private javax.swing.JPanel PanelDetalleFicha;
     private javax.swing.JPanel PanelListadoDepartamentos;
     private javax.swing.JPanel PanelListadoEmpleados;
-    private javax.swing.JPanel PanelListadoFichas;
     private javax.swing.JPanel TabDepartamentos;
     private javax.swing.JPanel TabEmpleados;
-    private javax.swing.JPanel TabFichas;
-    private javax.swing.JButton jButtonBorrarFicha;
-    private javax.swing.JButton jButtonGuardarFicha;
-    private javax.swing.JButton jButtonNuevaFicha;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -761,17 +569,13 @@ public class EmpresaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelEmpleadoCodigo;
     private javax.swing.JList<String> jListDpto;
     private javax.swing.JList<String> jListEmpleados;
-    private javax.swing.JList<String> jListFichas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextFieldFichaID;
-    private javax.swing.JTextField jTextFieldFichaNombreEmpleado;
-    private javax.swing.JTextField jTextFieldFichaTipoFichado;
+    private javax.swing.JTextField jTextFieldEmpleadoCodigo;
     private javax.swing.JSpinner spinnerEmpleadoSalario;
     // End of variables declaration//GEN-END:variables
 
@@ -969,118 +773,6 @@ public class EmpresaGUI extends javax.swing.JFrame {
             cargarEmpleados();
             // Seleccionamos el último empleado
             jListEmpleados.setSelectedIndex(listaEmpleados.size() - 1);
-        }
-    }
-
-    
-    // --------------- MÉTODOS FICHAS ----------------- //
-    
-    /**
-     * Método par cargar las Fichas en el jList de Fichas
-     */
-    private void cargarFichas() {
-        // Limpiamos el listado de Fichas
-        modeloJlistFichar.clear();
-        
-        // Actualizamos la lista de Fichas
-        listaFichas = conexion.listarFichas();
-        
-        String entradaSalida, valorMostrar;
-        // Recogemos cada ficha y la introducimos en el listado
-        for (Ficha ficha : listaFichas.getListaFichas()) {
-            
-            // Comprobamos si la ficha ha sido de entrada o salida
-            if (ficha.isEntrada()) {
-                entradaSalida = "Entrada";
-            } else {
-                entradaSalida = "Salida";
-            }
-            
-            // Creamos el valor que se mostrará en la lista
-            valorMostrar = ficha.getEmpleado().getNombre() + " - " +
-                    entradaSalida + " - " + ficha.getFechaFicha();
-            
-            // Lo añadimos al listado
-            modeloJlistFichar.addElement(valorMostrar);
-        }
-    }
-    
-    /**
-     * Método para mostrar los datos de la fichas en Detalles
-     * @param indiceSeleccionado int - Índice seleccionado en el jList de Fichas
-     */
-    private void mostrarDatosFichas(int indiceSeleccionado) {
-        if (indiceSeleccionado >= 0) {
-            // Obtenemos la ficha de la posición seleccionada en la lista
-            Ficha ficha = listaFichas.getFicha(indiceSeleccionado);
-            
-            // Establecemos los diferentes datos
-            jTextFieldFichaID.setText(String.valueOf(ficha.getIdFicha()));
-            jTextFieldFichaNombreEmpleado.setText(ficha.getEmpleado().getNombre());
-            
-            if (ficha.isEntrada()) {
-                jTextFieldFichaTipoFichado.setText("Entrada");
-            } else if (ficha.isSalida()) {
-                jTextFieldFichaTipoFichado.setText("Salida");
-            }
-        }
-    }
-    
-    /**
-     * Método para limpiar los campos de Detalles de las Fichas
-     */
-    private void limpiarDetallesFichas(){
-        jTextFieldFichaID.setText("");
-        jTextFieldFichaNombreEmpleado.setText("");
-        jTextFieldFichaTipoFichado.setText("");
-    }
-    
-    /**
-     * Método para borrar un Ficha de la BBDD
-     * @param ficha Ficha - Ficha que queremos borrar
-     */
-    private void borrarFicha(Ficha ficha) {
-        if (ficha.getIdFicha() > -1) {
-            // Borramos la ficha
-            conexion.borrarFicha(ficha);
-            // Actualizamos la lista de Fichas que se muestra
-            cargarFichas();
-            // Seleccionamos la última ficha
-            jListFichas.setSelectedIndex(listaFichas.size() - 1);
-        }
-    }
-    
-    /**
-     * Método para actualizar o insertar una ficha en la BD, esto se hará en 
-     * función de si la Ficha que se recibe como parámetro tiene o no id 
-     * respectivamente
-     * @param ficha Empleado - Empleado que vamos a actualizar o añadir
-     */
-    private void guardarFicha(Ficha ficha) {
-        if (ficha.getIdFicha() == -1) {
-            // Es una ficha nueva, en función del tipo de fichado se hará
-            // una inserción u otra
-            
-            if (ficha.isEntrada()) {
-                conexion.insertarFichaEntrada(ficha);
-            } else if (ficha.isSalida()) {
-                conexion.insertarFichaSalida(ficha);
-            } 
-            
-            // Actualizamos la lista de fichas que se muesta
-            cargarEmpleados();
-            // Seleccionamos la última ficha
-            jListFichas.setSelectedIndex(listaFichas.size() - 1);
-            
-        } else {
-            // Actualizamos los datos de la ficha
-            conexion.modificarFicha(ficha, ficha);
-            // Obtenemos la posición seleccionada de la lista
-            int posSel = jListFichas.getSelectedIndex();
-            // Actualizamos la lista de empleados que se muesta
-            cargarFichas();
-            // Seleccionamos la último ficha
-            jListFichas.setSelectedIndex(posSel);
         }
     }
 }

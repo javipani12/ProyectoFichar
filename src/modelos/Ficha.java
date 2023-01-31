@@ -15,6 +15,11 @@ public class Ficha {
     private Timestamp fechaFicha;
 
     public Ficha() {
+        idFicha = -1;
+        empleado = new Empleado();
+        entrada = false;
+        salida = false;
+        fechaFicha = null;
     }
 
     public Ficha(Empleado emp, boolean entrada, boolean salida, 

@@ -632,6 +632,38 @@ public class GestionBD {
         return insertado;
     }
     
+    public boolean modificarFicha( Ficha fichaOld, Ficha fichaNew ) {
+        
+        boolean modificado = false;
+        
+        conectar();
+        
+        try {
+            PreparedStatement ps = this.conexion.prepareStatement(
+                    "UPDATE fichar "
+                            + "SET idEmpleado = ?, entrada = ?, salida = ? "
+                            + "WHERE idFicha = ?"
+            );
+            
+            ps.setInt(1, fichaNew.getIdFicha());
+            ps.setBoolean(2, fichaNew.isEntrada());
+            ps.setBoolean(3, fichaNew.isSalida());
+            ps.setInt(4, fichaOld.getIdFicha());
+            
+            if (ps.execute()) {
+                modificado = true;
+            }
+            
+            desconectar();
+            
+        } catch (SQLException ex) {
+            System.err.println("Se ha producido un error al actualizar, " + ex.getMessage());
+        }
+        
+        return modificado;
+        
+    }
+    
     /**
      * Método para borrar un ficha de la BD
      * @param ficha Ficha - Ficha que queremos borrar de la BD
@@ -708,6 +740,7 @@ public class GestionBD {
                 
                 listaFichas.annadirFicha(ficha);
             }
+            
             desconectar();
         } catch (SQLException ex) {
             System.err.println("Se ha producido un error al recoger los datos, " + ex.getMessage());

@@ -12,13 +12,13 @@ import modelos.Empleado;
  *
  * @author Mi Pc
  */
-public class Login extends javax.swing.JFrame {
+public class VentanaLogin extends javax.swing.JFrame {
 
     GestionBD conexion;
     /**
      * Creates new form Login
      */
-    public Login() {
+    public VentanaLogin() {
         // Creamos la conexión a la BD
         conexion = new GestionBD("localhost", "javier",
                 "javier", "empresa_v2"
@@ -58,6 +58,7 @@ public class Login extends javax.swing.JFrame {
         jTextFieldLoginCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         jLabelInfoUno.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabelInfoUno.setText("¡Bienvenido a la ventana de logueo!");
@@ -427,7 +428,7 @@ public class Login extends javax.swing.JFrame {
                 // que el primer empleado en registrarse es el admin
                 // Al ser el admin, nos lleva a la ventana de gestión
                 if (emp.getIdEmpleado() == 1) {
-                    EmpresaGUI ventanaGestion = new EmpresaGUI();
+                    VentanaGestion ventanaGestion = new VentanaGestion();
                     JOptionPane.showMessageDialog( null, 
                             "Te has logueado como " + emp.getNombre());
                     this.setVisible(false);
@@ -472,20 +473,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new VentanaLogin().setVisible(true);
             }
         });
     }

@@ -54,7 +54,9 @@ public class VentanaFichar extends javax.swing.JFrame {
         jLabelEmpleado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
 
+        jButtonEntrar.setBackground(new java.awt.Color(204, 204, 255));
         jButtonEntrar.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButtonEntrar.setText("Registrar Entrada");
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +65,7 @@ public class VentanaFichar extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalir.setBackground(new java.awt.Color(204, 204, 255));
         jButtonSalir.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButtonSalir.setText("Registrar Salida");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +74,7 @@ public class VentanaFichar extends javax.swing.JFrame {
             }
         });
 
+        jButtonCerrarSesion.setBackground(new java.awt.Color(204, 0, 0));
         jButtonCerrarSesion.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButtonCerrarSesion.setText("Cerrar Sesión");
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +170,7 @@ public class VentanaFichar extends javax.swing.JFrame {
         JOptionPane.showMessageDialog( null, 
                     "Has cerrado sesión, volverás a la pantalla incial");
         this.setVisible(false);
-        Login ventanaLogin = new Login();
+        VentanaLogin ventanaLogin = new VentanaLogin();
         ventanaLogin.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 

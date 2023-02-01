@@ -13,7 +13,7 @@ import modelos.Empleados;
  *
  * @author damm
  */
-public class EmpresaGUI extends javax.swing.JFrame {
+public class VentanaGestion extends javax.swing.JFrame {
 
     // Objeto para conectarno a la BD
     GestionBD conexion;
@@ -33,7 +33,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
-    public EmpresaGUI() {
+    public VentanaGestion() {
         // Inicializamos los datos de Modelos
         modeloJlistDptos = new DefaultListModel();
         modeloJlistEmpleados = new DefaultListModel();
@@ -106,7 +106,13 @@ public class EmpresaGUI extends javax.swing.JFrame {
         BtNuevoDpto = new javax.swing.JButton();
         BtBorrarDpto = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+        });
 
         PanelListadoEmpleados.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado:"));
 
@@ -498,6 +504,15 @@ public class EmpresaGUI extends javax.swing.JFrame {
         mostrarDatosEmpleados(jListEmpleados.getSelectedIndex());
     }//GEN-LAST:event_jListEmpleadosValueChanged
 
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        // Establecemos el defultCloseOperation a Dispose, de manera
+        // que cuando cerremos esta ventana no se cierre el programa.
+        // En este evento actual, al desactivar la ventana nos llevará 
+        // a la ventana de VentanaLogin.
+        VentanaLogin ventanaLogin = new VentanaLogin();
+        ventanaLogin.setVisible(true);
+    }//GEN-LAST:event_formWindowDeactivated
+
     /**
      * @param args the command line arguments
      */
@@ -515,14 +530,22 @@ public class EmpresaGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmpresaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmpresaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmpresaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmpresaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -535,7 +558,7 @@ public class EmpresaGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmpresaGUI().setVisible(true);
+                new VentanaGestion().setVisible(true);
             }
         });
     }

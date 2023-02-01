@@ -37,8 +37,8 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelInfoUno = new javax.swing.JLabel();
+        jLabelInfo2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -59,20 +59,26 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("BIENVENIDO AL APARTADO DE LOGIN");
+        jLabelInfoUno.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabelInfoUno.setText("¡Bienvenido a la ventana de logueo!");
 
-        jLabel2.setText("INTRODUZCA SU NOMBRE Y SU CÓDIGO PARA INICIAR SESIÓN");
+        jLabelInfo2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabelInfo2.setText("Introduzca su nombre y su código para loguearse");
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel3.setText("Nombre:");
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel4.setText("Código:");
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
-        jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
-        jPanel1Layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0};
+        jPanel1Layout.columnWidths = new int[] {0, 7, 0, 7, 0};
+        jPanel1Layout.rowHeights = new int[] {0, 7, 0, 7, 0, 7, 0};
         jPanel1.setLayout(jPanel1Layout);
 
+        jButtonN7.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN7.setText("7");
+        jButtonN7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN7.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN7.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN7.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -87,7 +93,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN7, gridBagConstraints);
 
+        jButtonN8.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN8.setText("8");
+        jButtonN8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN8.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN8.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN8.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -102,7 +110,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN8, gridBagConstraints);
 
+        jButtonN9.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN9.setText("9");
+        jButtonN9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN9.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN9.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN9.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -117,7 +127,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN9, gridBagConstraints);
 
+        jButtonN4.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN4.setText("4");
+        jButtonN4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN4.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN4.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN4.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -132,7 +144,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN4, gridBagConstraints);
 
+        jButtonN5.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN5.setText("5");
+        jButtonN5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN5.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN5.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN5.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -147,7 +161,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN5, gridBagConstraints);
 
+        jButtonN6.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN6.setText("6");
+        jButtonN6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN6.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN6.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN6.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -162,7 +178,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN6, gridBagConstraints);
 
+        jButtonN1.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN1.setText("1");
+        jButtonN1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN1.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN1.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN1.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -177,7 +195,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN1, gridBagConstraints);
 
+        jButtonN2.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN2.setText("2");
+        jButtonN2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN2.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN2.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN2.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -192,7 +212,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN2, gridBagConstraints);
 
+        jButtonN3.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN3.setText("3");
+        jButtonN3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN3.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN3.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN3.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -207,7 +229,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jButtonN3, gridBagConstraints);
 
+        jButtonN0.setBackground(new java.awt.Color(14, 165, 231));
         jButtonN0.setText("0");
+        jButtonN0.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonN0.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonN0.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonN0.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -221,7 +245,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         jPanel1.add(jButtonN0, gridBagConstraints);
 
-        jButtonBorrar.setText("<-");
+        jButtonBorrar.setBackground(new java.awt.Color(234, 12, 12));
+        jButtonBorrar.setText(" ⬅");
+        jButtonBorrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonBorrar.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonBorrar.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonBorrar.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -235,7 +261,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         jPanel1.add(jButtonBorrar, gridBagConstraints);
 
+        jButtonValidar.setBackground(new java.awt.Color(17, 201, 33));
         jButtonValidar.setText("OK");
+        jButtonValidar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButtonValidar.setMaximumSize(new java.awt.Dimension(50, 50));
         jButtonValidar.setMinimumSize(new java.awt.Dimension(50, 50));
         jButtonValidar.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -249,61 +277,65 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         jPanel1.add(jButtonValidar, gridBagConstraints);
 
-        jTextFieldNombre.setMinimumSize(new java.awt.Dimension(100, 22));
-        jTextFieldNombre.setPreferredSize(new java.awt.Dimension(100, 22));
+        jTextFieldNombre.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jTextFieldNombre.setMinimumSize(new java.awt.Dimension(100, 30));
+        jTextFieldNombre.setPreferredSize(new java.awt.Dimension(100, 30));
 
         jTextFieldLoginCodigo.setEditable(false);
+        jTextFieldLoginCodigo.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextFieldLoginCodigo.setFocusable(false);
+        jTextFieldLoginCodigo.setMinimumSize(new java.awt.Dimension(100, 30));
+        jTextFieldLoginCodigo.setPreferredSize(new java.awt.Dimension(100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jLabelInfoUno)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldLoginCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel2))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldLoginCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(58, 58, 58)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelInfo2, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(jLabelInfoUno)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jLabelInfo2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
+                        .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jTextFieldLoginCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -383,7 +415,7 @@ public class Login extends javax.swing.JFrame {
         
         // Si la longitud es 4 
         if (codigo.length() == 4) {
-            // Obtenemos el id del empleado comprobando el código
+            // Obtenemos el id del empleado comprobando su código y nombre
             int id = conexion.comprobarCodigo(Integer.parseInt(codigo), nombre);
             
             // Si el id es mayor a 1 es un usuario válido
@@ -391,7 +423,9 @@ public class Login extends javax.swing.JFrame {
                 // Obtenemos el empleado mediante su id
                 Empleado emp = conexion.buscarEmpleado(id);
                 
-                // Si el id es 1, se habrá logueado el admin
+                // Si el id es 1, se habrá logueado el admin. Entendemos
+                // que el primer empleado en registrarse es el admin
+                // Al ser el admin, nos lleva a la ventana de gestión
                 if (emp.getIdEmpleado() == 1) {
                     EmpresaGUI ventanaGestion = new EmpresaGUI();
                     JOptionPane.showMessageDialog( null, 
@@ -399,6 +433,8 @@ public class Login extends javax.swing.JFrame {
                     this.setVisible(false);
                     ventanaGestion.setVisible(true);
                 } else {
+                    // En caso de que sea un id diferente de 1, es un
+                    // usuario normal, lo llevamos a la ventana de fichar
                     VentanaFichar ventanaFichar = new VentanaFichar(emp, conexion);
                     JOptionPane.showMessageDialog( null, 
                             "Te has logueado como " + emp.getNombre());
@@ -406,7 +442,9 @@ public class Login extends javax.swing.JFrame {
                     ventanaFichar.setVisible(true);
                 }
             } else {
-                System.err.println("El usuario no existe");
+                // En caso de que no nos devuelva un id válido, mensaje de error
+                JOptionPane.showMessageDialog( null,
+                "El nombre o el código introducidos no son válidos");
             }
         // En caso contrario
         } else {
@@ -465,10 +503,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButtonN8;
     private javax.swing.JButton jButtonN9;
     private javax.swing.JButton jButtonValidar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelInfo2;
+    private javax.swing.JLabel jLabelInfoUno;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldLoginCodigo;
     private javax.swing.JTextField jTextFieldNombre;

@@ -3,6 +3,7 @@ package interfaz;
 import BD.GestionBD;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import modelos.Departamento;
 import modelos.Departamentos;
 import modelos.Empleado;
@@ -425,34 +426,15 @@ public class EmpresaGUI extends javax.swing.JFrame {
     private void BtBorrarDptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtBorrarDptoActionPerformed
         // Creamos un objeto Departamento
         Departamento dep = new Departamento();
-        
+
         // Asignamos los valores de la interfaz
         // Comprobamos que el ID existe
         if (!JTexFieldDptoID.getText().isBlank()) {
             dep.setIdDepartamento(Integer.parseInt(JTexFieldDptoID.getText()));
-        }        
+        }
         // Usamos el método para borrar el departamento
         borrarDepartamento(dep);
     }//GEN-LAST:event_BtBorrarDptoActionPerformed
-
-    private void BtBorrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtBorrarEmpleadoActionPerformed
-        // Creamos un objeto empleado
-        Empleado emp = new Empleado();
-        
-        if (!JTexFieldEmpleadoID.getText().isBlank()) {
-            emp.setIdEmpleado(Integer.parseInt(JTexFieldEmpleadoID.getText()));
-        }
-        
-        borrarEmpleado(emp);
-    }//GEN-LAST:event_BtBorrarEmpleadoActionPerformed
-
-    private void jListDptoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDptoValueChanged
-        mostrarDatosDpto(jListDpto.getSelectedIndex());
-    }//GEN-LAST:event_jListDptoValueChanged
-
-    private void jListEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListEmpleadosValueChanged
-        mostrarDatosEmpleados(jListEmpleados.getSelectedIndex());
-    }//GEN-LAST:event_jListEmpleadosValueChanged
 
     private void BtNuevoDptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNuevoDptoActionPerformed
         limpiarDetallesDepartamento();
@@ -461,18 +443,33 @@ public class EmpresaGUI extends javax.swing.JFrame {
     private void BtGuardarDptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGuardarDptoActionPerformed
         // Creamos un objeto departamento
         Departamento dep = new Departamento();
-        
+
         // Asignamos los valores de la interfaz
         // Comprobamos que el ID existe
         if (!JTexFieldDptoID.getText().isBlank()) {
             dep.setIdDepartamento(Integer.parseInt(JTexFieldDptoID.getText()));
         }
-        
+
         dep.setNombre(JTexFieldDptoNombre.getText());
-        
+
         // Usamos el método para guardar el departamento
         guardarDepartamento(dep);
     }//GEN-LAST:event_BtGuardarDptoActionPerformed
+
+    private void jListDptoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDptoValueChanged
+        mostrarDatosDpto(jListDpto.getSelectedIndex());
+    }//GEN-LAST:event_jListDptoValueChanged
+
+    private void BtBorrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtBorrarEmpleadoActionPerformed
+        // Creamos un objeto empleado
+        Empleado emp = new Empleado();
+
+        if (!JTexFieldEmpleadoID.getText().isBlank()) {
+            emp.setIdEmpleado(Integer.parseInt(JTexFieldEmpleadoID.getText()));
+        }
+
+        borrarEmpleado(emp);
+    }//GEN-LAST:event_BtBorrarEmpleadoActionPerformed
 
     private void BtNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNuevoEmpleadoActionPerformed
         limpiarDetallesEmpleados();
@@ -481,11 +478,11 @@ public class EmpresaGUI extends javax.swing.JFrame {
     private void BtGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGuardarEmpleadoActionPerformed
         // Creamos un objeto empleado
         Empleado emp = new Empleado();
-        
+
         if (!JTexFieldEmpleadoID.getText().isBlank()) {
             emp.setIdEmpleado(Integer.parseInt(JTexFieldEmpleadoID.getText()));
         }
-        
+
         // Asignamos los valores al empleado
         emp.setNombre(JTexFieldEmpleadoNombre.getText());
         emp.setApellido(JTexFieldEmpleadoApellidos.getText());
@@ -493,9 +490,13 @@ public class EmpresaGUI extends javax.swing.JFrame {
         emp.setEmail(JTexFieldEmpleadoEmail.getText());
         emp.setDpt(listaDepartamentos.getDepartamentoBis(CbEmpleadosDpto.getSelectedIndex()));
         emp.setCodigoEmp(Integer.parseInt(jTextFieldEmpleadoCodigo.getText()));
-        
+
         guardarEmpleado(emp);
     }//GEN-LAST:event_BtGuardarEmpleadoActionPerformed
+
+    private void jListEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListEmpleadosValueChanged
+        mostrarDatosEmpleados(jListEmpleados.getSelectedIndex());
+    }//GEN-LAST:event_jListEmpleadosValueChanged
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@ import modelos.Departamento;
 import modelos.Departamentos;
 import modelos.Empleado;
 import modelos.Empleados;
+import modelos.Ficha;
 
 /**
  *
@@ -588,6 +589,93 @@ public class GestionBD {
         }
         
         return insertado;
+    }
+    
+    /**
+     * Método para obtener una ficha de entrada de la BD de un Empleado 
+     * en concreto en la fecha actual
+     * @param emp Empleado - Empleado del que queremos obtener la ficha 
+     * de entrada
+     * @return Ficha - Nos devuelve la Ficha a buscar del empleado
+     */
+    public Ficha obtenerFichaEntrada(Empleado emp) {
+        Ficha ficha = new Ficha();
+        
+        conectar();
+        
+        try {
+            // Preparamos la cadena de inserción
+            PreparedStatement ps = conexion.prepareStatement(
+                    "SELECT * FROM fichar WHERE idEmpleado = ? AND "
+                    + "entrada = ? AND CAST(fechaFicha as DATE) = ?"
+            );
+            
+            ps.setInt(1, emp.getIdEmpleado());
+            ps.setBoolean(2, true);
+            ps.setDate(3, Date.valueOf(obtenerFechaServidor().toString().split(" ")[0]));
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                ficha.setIdFicha(rs.getInt(1));
+                ficha.setEmpleado(buscarEmpleado(2));
+                ficha.setEntrada(rs.getBoolean(3));
+                ficha.setSalida(rs.getBoolean(4));
+                ficha.setFechaFicha(rs.getTimestamp(5));
+            }
+            
+            // Nos desconectamos de la BD
+            desconectar();
+            
+        } catch (SQLException ex) {
+            System.err.println("Se ha producido un error al insertar" + ex.getMessage());
+        }
+        
+        return ficha;
+    }
+    
+    
+    /**
+     * Método para obtener una ficha de salida de la BD de un Empleado 
+     * en concreto en la fecha actual
+     * @param emp Empleado - Empleado del que queremos obtener la ficha 
+     * de entrada
+     * @return Ficha - Nos devuelve la Ficha a buscar del empleado
+     */
+    public Ficha obtenerFichaSalida(Empleado emp) {
+        Ficha ficha = new Ficha();
+        
+        conectar();
+        
+        try {
+            // Preparamos la cadena de inserción
+            PreparedStatement ps = conexion.prepareStatement(
+                    "SELECT * FROM fichar WHERE idEmpleado = ? AND "
+                    + "salida = ? AND CAST(fechaFicha as DATE) = ?"
+            );
+            
+            ps.setInt(1, emp.getIdEmpleado());
+            ps.setBoolean(2, true);
+            ps.setDate(3, Date.valueOf(obtenerFechaServidor().toString().split(" ")[0]));
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                ficha.setIdFicha(rs.getInt(1));
+                ficha.setEmpleado(buscarEmpleado(2));
+                ficha.setEntrada(rs.getBoolean(3));
+                ficha.setSalida(rs.getBoolean(4));
+                ficha.setFechaFicha(rs.getTimestamp(5));
+            }
+            
+            // Nos desconectamos de la BD
+            desconectar();
+            
+        } catch (SQLException ex) {
+            System.err.println("Se ha producido un error al insertar" + ex.getMessage());
+        }
+        
+        return ficha;
     }
     
     // ------------------ MÉTODO FECHA Y HORA SERVIDOR ---------------//

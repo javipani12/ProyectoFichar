@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelos.Empleado;
+import modelos.Ficha;
 
 /**
  *
@@ -46,8 +47,8 @@ public class VentanaFichar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonEntrar = new javax.swing.JButton();
-        jButtonSalir = new javax.swing.JButton();
+        jButtonRegistrarEntrada = new javax.swing.JButton();
+        jButtonRegistrarSalida = new javax.swing.JButton();
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabelHora = new javax.swing.JLabel();
         jButtonFotoEmpleado = new javax.swing.JButton();
@@ -56,21 +57,21 @@ public class VentanaFichar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
 
-        jButtonEntrar.setBackground(new java.awt.Color(204, 204, 255));
-        jButtonEntrar.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButtonEntrar.setText("Registrar Entrada");
-        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistrarEntrada.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonRegistrarEntrada.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButtonRegistrarEntrada.setText("Registrar Entrada");
+        jButtonRegistrarEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEntrarActionPerformed(evt);
+                jButtonRegistrarEntradaActionPerformed(evt);
             }
         });
 
-        jButtonSalir.setBackground(new java.awt.Color(204, 204, 255));
-        jButtonSalir.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButtonSalir.setText("Registrar Salida");
-        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistrarSalida.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonRegistrarSalida.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButtonRegistrarSalida.setText("Registrar Salida");
+        jButtonRegistrarSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirActionPerformed(evt);
+                jButtonRegistrarSalidaActionPerformed(evt);
             }
         });
 
@@ -115,9 +116,9 @@ public class VentanaFichar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jButtonEntrar)
+                        .addComponent(jButtonRegistrarEntrada)
                         .addGap(34, 34, 34)
-                        .addComponent(jButtonSalir))
+                        .addComponent(jButtonRegistrarSalida))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jButtonCerrarSesion)))
@@ -134,8 +135,8 @@ public class VentanaFichar extends javax.swing.JFrame {
                     .addComponent(jLabelEmpleado))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEntrar)
-                    .addComponent(jButtonSalir))
+                    .addComponent(jButtonRegistrarEntrada)
+                    .addComponent(jButtonRegistrarSalida))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap(54, Short.MAX_VALUE))
@@ -144,27 +145,45 @@ public class VentanaFichar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+    private void jButtonRegistrarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarEntradaActionPerformed
         try {
-            fechaFicha = conexion.obtenerFechaServidor();
-            conexion.insertarFichaEntrada(empleado, fechaFicha);
-            JOptionPane.showMessageDialog( null, 
-                    "Se ha registrado tu entrada a la empresa");
+            // Si la ficha que obtenemos es nula, quiere decir que no existe
+            // registro de la entrada en el día de hoy, insertamos la ficha 
+            // de entrada
+            if (!comprobarFicha(conexion.obtenerFichaEntrada(empleado))) {
+                fechaFicha = conexion.obtenerFechaServidor();
+                conexion.insertarFichaEntrada(empleado, fechaFicha);
+                JOptionPane.showMessageDialog( null, 
+                        "Se ha registrado tu entrada a la empresa");
+            } else {
+                // Si ya se ha registrado la entrada hoy, mostramos mensaje
+                // de error
+                JOptionPane.showMessageDialog( null, 
+                        empleado.getNombre() + ", ya has registrado tu entrada "
+                                + "a la empresa en el día de hoy");
+            }
         } catch(Exception ex) {
             System.err.println(ex.getMessage());
         }
-    }//GEN-LAST:event_jButtonEntrarActionPerformed
+        // Repetimos el mismo procedimiento con el botón de registrar salida
+    }//GEN-LAST:event_jButtonRegistrarEntradaActionPerformed
 
-    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+    private void jButtonRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarSalidaActionPerformed
         try {
-            fechaFicha = conexion.obtenerFechaServidor();
-            conexion.insertarFichaSalida(empleado, fechaFicha);
-            JOptionPane.showMessageDialog( null, 
-                    "Se ha registrado tu salida de la empresa");
+            if (!comprobarFicha(conexion.obtenerFichaSalida(empleado))) {
+                fechaFicha = conexion.obtenerFechaServidor();
+                conexion.insertarFichaSalida(empleado, fechaFicha);
+                JOptionPane.showMessageDialog( null, 
+                        "Se ha registrado tu salida de la empresa");
+            } else {
+                JOptionPane.showMessageDialog( null, 
+                        empleado.getNombre() + ", ya has registrado tu salida "
+                                + "de la empresa en el día de hoy");
+            }
         } catch(Exception ex) {
             System.err.println(ex.getMessage());
         }
-    }//GEN-LAST:event_jButtonSalirActionPerformed
+    }//GEN-LAST:event_jButtonRegistrarSalidaActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         JOptionPane.showMessageDialog( null, 
@@ -211,9 +230,9 @@ public class VentanaFichar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
-    private javax.swing.JButton jButtonEntrar;
     private javax.swing.JButton jButtonFotoEmpleado;
-    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JButton jButtonRegistrarEntrada;
+    private javax.swing.JButton jButtonRegistrarSalida;
     private javax.swing.JLabel jLabelEmpleado;
     private javax.swing.JLabel jLabelHora;
     // End of variables declaration//GEN-END:variables
@@ -240,5 +259,27 @@ public class VentanaFichar extends javax.swing.JFrame {
         
         // Establecemos al label el nombre y apellidos del empleado
         jLabelEmpleado.setText(emp.getNombre() + " " + emp.getApellido() + "!");
+    }
+    
+    /**
+     * Método para comprobar si la Ficha obtenida es válida o no, si cualquier
+     * campo es nulo la Ficha no será válida, en este caso se comprobará 
+     * solamente el de la fecha ya que solo es necesario que un campo sea nulo.
+     * Si la ficha es nula, quiere decir que un Empleado en concreto no 
+     * ha insertado una Ficha de entrada o de salida todavía en la BBDD, si la
+     * ficha es válida, quiere decir que ese Empleado ya se ha registrado la 
+     * entrada o la salida.
+     * @param ficha Ficha - Ficha que vamos a comprobar
+     * @return boolean - Nos devuelve true si la ficha es válida, en caso
+     * contrario nos devuelve false.
+     */
+    private boolean comprobarFicha(Ficha ficha){
+        boolean existe = false;
+        
+        if (ficha.getFechaFicha() != null) {
+            existe = true;
+        }
+        
+        return existe;
     }
 }

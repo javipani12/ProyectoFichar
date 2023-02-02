@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `empresa_v2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `empresa_v2`;
--- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: localhost    Database: empresa_v2
 -- ------------------------------------------------------
@@ -18,27 +16,27 @@ USE `empresa_v2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Departamentos`
+-- Table structure for table `departamentos`
 --
 
-DROP TABLE IF EXISTS `Departamentos`;
+DROP TABLE IF EXISTS `departamentos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Departamentos` (
+CREATE TABLE `departamentos` (
   `idDepartamento` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`idDepartamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Departamentos`
+-- Dumping data for table `departamentos`
 --
 
-LOCK TABLES `Departamentos` WRITE;
-/*!40000 ALTER TABLE `Departamentos` DISABLE KEYS */;
-INSERT INTO `Departamentos` VALUES (1,'Administración'),(2,'Dirección');
-/*!40000 ALTER TABLE `Departamentos` ENABLE KEYS */;
+LOCK TABLES `departamentos` WRITE;
+/*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
+INSERT INTO `departamentos` (`idDepartamento`, `nombre`) VALUES (1,'Administración'),(2,'Dirección'),(3,'Matemáticas'),(4,'Ciencias'),(5,'Informática');
+/*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -58,7 +56,7 @@ CREATE TABLE `empleados` (
   `codigoEmp` decimal(4,0) DEFAULT NULL,
   PRIMARY KEY (`idEmpleado`),
   KEY `fk_emp_dep` (`idDepartamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +65,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (1,'admin','admin',5678.23,'admin@a.com',1,0),(2,'Maria','Farias',1345.69,'lolalolitalola@lola.com',1,4321);
+INSERT INTO `empleados` (`idEmpleado`, `nombre`, `apellidos`, `salario`, `email`, `idDepartamento`, `codigoEmp`) VALUES (1,'admin','admin',5678.23,'admin@a.com',1,1234),(2,'Maria','Farias',1345.69,'lolalolitalola@lola.com',1,4321),(3,'Javier','Fernandez Paniagua',1485,'javier@javier.com',2,5896),(5,'Ana Maria','Herrera Flores',6231,'ana@ana.com',1,1912),(6,'Pedro','Truncado Moreno',1017,'p@p.com',4,1456),(8,'Amanda','Cintero Llano',1520,'a@cl.com',3,3246),(9,'Ramón','Fraile Curado',1017,'rfc@rfc.com',5,7806);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +85,7 @@ CREATE TABLE `fichar` (
   PRIMARY KEY (`idFicha`),
   KEY `fk_fichar_empleados` (`idEmpleado`),
   CONSTRAINT `fk_fichar_empleados` FOREIGN KEY (`idEmpleado`) REFERENCES `empleados` (`idEmpleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +94,7 @@ CREATE TABLE `fichar` (
 
 LOCK TABLES `fichar` WRITE;
 /*!40000 ALTER TABLE `fichar` DISABLE KEYS */;
-INSERT INTO `fichar` VALUES (2,1,1,0,'2023-03-02 15:45:22'),(3,1,0,1,'2023-01-27 14:33:23');
+INSERT INTO `fichar` (`idFicha`, `idEmpleado`, `entrada`, `salida`, `fechaFicha`) VALUES (2,1,1,0,'2023-03-02 15:45:22'),(4,2,1,0,'2023-01-31 21:12:58'),(5,2,0,1,'2023-01-31 21:13:12'),(6,2,1,0,'2023-02-01 23:53:00'),(7,2,0,1,'2023-02-01 23:53:02'),(8,2,1,0,'2023-02-02 00:00:26'),(9,2,0,1,'2023-02-02 00:00:28');
 /*!40000 ALTER TABLE `fichar` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-27 14:35:29
+-- Dump completed on 2023-02-02  1:20:44

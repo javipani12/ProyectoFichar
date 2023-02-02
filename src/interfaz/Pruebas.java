@@ -30,14 +30,16 @@ public class Pruebas {
         Empleado empleado = new Empleado(1, "admin", "admin", 5678.23F, "admin@a.com", departamento, 0000);
         Empleado empleado2 = new Empleado(2, "Maria", "Farias", 1345.69F, "lolalolitalola@lola.com", departamento, 4321);
         
-        Ficha ficha1_1 = new Ficha(1, empleado, true, true, 
-                Timestamp.valueOf(LocalDateTime.of(2023, Month.MARCH, 2, 16, 45, 22))
-        );
-        
-        Timestamp fechaHora = gestionBD.obtenerFechaServidor();
-        System.out.println(fechaHora);
-        
-        Ficha ficha1_2 = new Ficha(1, empleado, true, true, fechaHora);
+//        Ficha ficha1_1 = new Ficha(1, empleado, true, true, 
+//                Timestamp.valueOf(LocalDateTime.of(2023, Month.MARCH, 2, 16, 45, 22))
+//        );
+//        
+//        Timestamp fechaHora = gestionBD.obtenerFechaServidor();
+//        System.out.println(fechaHora);
+//        
+//        Ficha ficha1_2 = new Ficha(1, empleado, true, true, fechaHora);
+        System.out.println(gestionBD.obtenerFechaServidor().toString().split(" ")[0]);
+        System.out.println(gestionBD.obtenerFichaEntrada(empleado2).toString());
         
 //        gestionBD.insertarDepartamento(departamento);
 //        gestionBD.insertarDepartamento(departamento2);

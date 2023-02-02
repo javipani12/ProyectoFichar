@@ -109,8 +109,8 @@ public class VentanaGestion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowDeactivated(java.awt.event.WindowEvent evt) {
-                formWindowDeactivated(evt);
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
 
@@ -186,46 +186,41 @@ public class VentanaGestion extends javax.swing.JFrame {
 
         jLabelEmpleadoCodigo.setText("Código");
 
-        jTextFieldEmpleadoCodigo.setMinimumSize(new java.awt.Dimension(72, 22));
-        jTextFieldEmpleadoCodigo.setPreferredSize(new java.awt.Dimension(72, 22));
-
         javax.swing.GroupLayout PanelDetalleEmpleadosLayout = new javax.swing.GroupLayout(PanelDetalleEmpleados);
         PanelDetalleEmpleados.setLayout(PanelDetalleEmpleadosLayout);
         PanelDetalleEmpleadosLayout.setHorizontalGroup(
             PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(JTexFieldEmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTexFieldEmpleadoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTexFieldEmpleadoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTexFieldEmpleadoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
-                        .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelDetalleEmpleadosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelDetalleEmpleadosLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(BtGuardarEmpleado)))
+                        .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
+                                .addComponent(CbEmpleadosDpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)))
                         .addGap(18, 18, 18)
                         .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelEmpleadoCodigo)
-                            .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
-                                .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextFieldEmpleadoCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BtNuevoEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(BtBorrarEmpleado))))
-                    .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(JTexFieldEmpleadoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTexFieldEmpleadoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTexFieldEmpleadoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTexFieldEmpleadoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CbEmpleadosDpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spinnerEmpleadoSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldEmpleadoCodigo))
+                        .addGap(77, 77, 77))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinnerEmpleadoSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(PanelDetalleEmpleadosLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(BtGuardarEmpleado)
+                .addGap(18, 18, 18)
+                .addComponent(BtNuevoEmpleado)
+                .addGap(18, 18, 18)
+                .addComponent(BtBorrarEmpleado)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         PanelDetalleEmpleadosLayout.setVerticalGroup(
@@ -251,7 +246,7 @@ public class VentanaGestion extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JTexFieldEmpleadoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelDetalleEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabelEmpleadoCodigo))
@@ -457,9 +452,15 @@ public class VentanaGestion extends javax.swing.JFrame {
         }
 
         dep.setNombre(JTexFieldDptoNombre.getText());
-
-        // Usamos el método para guardar el departamento
-        guardarDepartamento(dep);
+        
+        // Comprobamos que los campos estén llenos
+        if (dep.getNombre().length() == 0) {
+            JOptionPane.showMessageDialog( null, 
+            "El campo del nombre está vacío, introduzca uno");
+        } else {
+            // Usamos el método para guardar el departamento
+            guardarDepartamento(dep);
+        }
     }//GEN-LAST:event_BtGuardarDptoActionPerformed
 
     private void jListDptoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListDptoValueChanged
@@ -482,36 +483,83 @@ public class VentanaGestion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtNuevoEmpleadoActionPerformed
 
     private void BtGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGuardarEmpleadoActionPerformed
-        // Creamos un objeto empleado
+        // Creamos un objeto empleado, guardamos el código en una
+        // variable y generamos un array de números
         Empleado emp = new Empleado();
-
-        if (!JTexFieldEmpleadoID.getText().isBlank()) {
-            emp.setIdEmpleado(Integer.parseInt(JTexFieldEmpleadoID.getText()));
+        String codigo = jTextFieldEmpleadoCodigo.getText();
+        int[] numeros = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        boolean contieneNumero = false;
+        
+        // Recorremos el código y comprobamos si la posición en la que está
+        // la iteración contiene un número del array
+        for (int i = 0; i < codigo.length(); i++) {
+            for (int j = 0; j < numeros.length; j++) {
+                if (codigo.charAt(i) == Integer.toString(numeros[j]).charAt(0)) {
+                    // Si contiene un número cambiamos el valor 
+                    // de contieneNumero a true
+                    contieneNumero = true;
+                }
+            }
         }
-
-        // Asignamos los valores al empleado
-        emp.setNombre(JTexFieldEmpleadoNombre.getText());
-        emp.setApellido(JTexFieldEmpleadoApellidos.getText());
-        emp.setSalario(Float.parseFloat(spinnerEmpleadoSalario.getValue().toString()));
-        emp.setEmail(JTexFieldEmpleadoEmail.getText());
-        emp.setDpt(listaDepartamentos.getDepartamentoBis(CbEmpleadosDpto.getSelectedIndex()));
-        emp.setCodigoEmp(Integer.parseInt(jTextFieldEmpleadoCodigo.getText()));
-
-        guardarEmpleado(emp);
+        
+        // Si el código contiene algún carácter diferente a un número
+        // mostramos un mensaje de error
+        if (!contieneNumero) {
+            // Mostramos mensaje de error
+            JOptionPane.showMessageDialog( null, 
+                            "El código contiene algún carácter diferente"
+                            + " a un número");
+        } else {
+            // En caso contrario, comprobamos la longitud del código
+            if (codigo.length() != 4) {
+                JOptionPane.showMessageDialog( null, "El código"
+                        + " debe tener una longitud de 4 dígitos");
+            } else {
+                // Si es 4
+                if (!JTexFieldEmpleadoID.getText().isBlank()) {
+                    emp.setIdEmpleado(Integer.parseInt(JTexFieldEmpleadoID.getText()));
+                }
+                
+                try {
+                    // Asignamos los valores al empleado
+                    emp.setNombre(JTexFieldEmpleadoNombre.getText());
+                    emp.setApellido(JTexFieldEmpleadoApellidos.getText());
+                    emp.setSalario(Float.parseFloat(spinnerEmpleadoSalario.getValue().toString()));
+                    emp.setEmail(JTexFieldEmpleadoEmail.getText());
+                    emp.setDpt(listaDepartamentos.getDepartamentoBis(CbEmpleadosDpto.getSelectedIndex()));
+                    emp.setCodigoEmp(Integer.parseInt(jTextFieldEmpleadoCodigo.getText()));
+                } catch(java.lang.IndexOutOfBoundsException ex) {
+                    
+                }
+                
+                // Comprobamos que el resto de campos estén llenos
+                if (emp.getNombre().length() == 0 || 
+                    emp.getApellido().length() == 0 ||
+                    emp.getEmail().length() == 0 ||
+                    emp.getDpt() == null) {
+                    JOptionPane.showMessageDialog( null, "Algunos"
+                            + " campos están vacíos. Todo deben estar llenos");
+                } else {
+                    guardarEmpleado(emp);
+                }
+            }
+        }
     }//GEN-LAST:event_BtGuardarEmpleadoActionPerformed
 
     private void jListEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListEmpleadosValueChanged
         mostrarDatosEmpleados(jListEmpleados.getSelectedIndex());
     }//GEN-LAST:event_jListEmpleadosValueChanged
 
-    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // Establecemos el defultCloseOperation a Dispose, de manera
         // que cuando cerremos esta ventana no se cierre el programa.
-        // En este evento actual, al desactivar la ventana nos llevará 
+        // En este evento actual, al cerrar la ventana nos llevará 
         // a la ventana de VentanaLogin.
+        JOptionPane.showMessageDialog( null, 
+                "Has cerrado sesión, volverás a la pantalla incial");
         VentanaLogin ventanaLogin = new VentanaLogin();
         ventanaLogin.setVisible(true);
-    }//GEN-LAST:event_formWindowDeactivated
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

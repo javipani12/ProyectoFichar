@@ -44,9 +44,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="jButtonEntrar" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonRegistrarEntrada" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jButtonSalir" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonRegistrarSalida" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
@@ -69,8 +69,8 @@
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonEntrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonRegistrarEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonRegistrarSalida" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButtonCerrarSesion" min="-2" max="-2" attributes="0"/>
@@ -80,7 +80,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButtonEntrar">
+    <Component class="javax.swing.JButton" name="jButtonRegistrarEntrada">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -91,10 +91,10 @@
         <Property name="text" type="java.lang.String" value="Registrar Entrada"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEntrarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarEntradaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonSalir">
+    <Component class="javax.swing.JButton" name="jButtonRegistrarSalida">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -105,7 +105,7 @@
         <Property name="text" type="java.lang.String" value="Registrar Salida"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalirActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarSalidaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCerrarSesion">

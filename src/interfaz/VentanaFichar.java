@@ -47,15 +47,23 @@ public class VentanaFichar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonFotoEmpleado = new javax.swing.JButton();
+        jPanelFicharBotones = new javax.swing.JPanel();
         jButtonRegistrarEntrada = new javax.swing.JButton();
         jButtonRegistrarSalida = new javax.swing.JButton();
         jButtonCerrarSesion = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabelHora = new javax.swing.JLabel();
-        jButtonFotoEmpleado = new javax.swing.JButton();
         jLabelEmpleado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+
+        jButtonFotoEmpleado.setBackground(new java.awt.Color(0, 153, 153));
+        jButtonFotoEmpleado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jButtonFotoEmpleado.setMaximumSize(new java.awt.Dimension(150, 150));
+        jButtonFotoEmpleado.setMinimumSize(new java.awt.Dimension(150, 150));
+        jButtonFotoEmpleado.setPreferredSize(new java.awt.Dimension(150, 150));
 
         jButtonRegistrarEntrada.setBackground(new java.awt.Color(204, 204, 255));
         jButtonRegistrarEntrada.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -84,62 +92,88 @@ public class VentanaFichar extends javax.swing.JFrame {
             }
         });
 
-        jLabelHora.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabelHora.setText("¡Bienvenido");
+        javax.swing.GroupLayout jPanelFicharBotonesLayout = new javax.swing.GroupLayout(jPanelFicharBotones);
+        jPanelFicharBotones.setLayout(jPanelFicharBotonesLayout);
+        jPanelFicharBotonesLayout.setHorizontalGroup(
+            jPanelFicharBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFicharBotonesLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jButtonCerrarSesion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelFicharBotonesLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jButtonRegistrarEntrada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonRegistrarSalida)
+                .addGap(32, 32, 32))
+        );
+        jPanelFicharBotonesLayout.setVerticalGroup(
+            jPanelFicharBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFicharBotonesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelFicharBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonRegistrarEntrada, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonRegistrarSalida, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCerrarSesion)
+                .addGap(39, 39, 39))
+        );
 
-        jButtonFotoEmpleado.setBackground(new java.awt.Color(0, 153, 153));
-        jButtonFotoEmpleado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
-        jButtonFotoEmpleado.setMaximumSize(new java.awt.Dimension(150, 150));
-        jButtonFotoEmpleado.setMinimumSize(new java.awt.Dimension(150, 150));
-        jButtonFotoEmpleado.setPreferredSize(new java.awt.Dimension(150, 150));
+        jLabelHora.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelHora.setText("Bienvenido,");
 
         jLabelEmpleado.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabelEmpleado.setText("-----!");
+        jLabelEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEmpleado.setText("-----");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelHora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelEmpleado)
+                .addContainerGap(175, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelHora)
+                    .addComponent(jLabelEmpleado))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelHora)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelEmpleado)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(110, 110, 110)
+                        .addComponent(jButtonFotoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButtonFotoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jButtonRegistrarEntrada)
-                        .addGap(34, 34, 34)
-                        .addComponent(jButtonRegistrarSalida))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jButtonCerrarSesion)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanelFicharBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(15, 15, 15)
                 .addComponent(jButtonFotoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelHora)
-                    .addComponent(jLabelEmpleado))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRegistrarEntrada)
-                    .addComponent(jButtonRegistrarSalida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonCerrarSesion)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(jPanelFicharBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -235,6 +269,8 @@ public class VentanaFichar extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRegistrarSalida;
     private javax.swing.JLabel jLabelEmpleado;
     private javax.swing.JLabel jLabelHora;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelFicharBotones;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -250,11 +286,11 @@ public class VentanaFichar extends javax.swing.JFrame {
         // Filtramos los dígitos, en función de la hora se mostrará
         // un mensaje u otro
         if (digitosHora >= 8 || digitosHora <= 13) {
-            jLabelHora.setText("¡Buenos días");
+            jLabelHora.setText("¡Buenos días,");
         } else if (digitosHora >= 14 || digitosHora <= 20){
-            jLabelHora.setText("¡Buenas tardes");
+            jLabelHora.setText("¡Buenas tardes,");
         } else {
-            jLabelHora.setText("¡Buenas noches");
+            jLabelHora.setText("¡Buenas noches,");
         }
         
         // Establecemos al label el nombre y apellidos del empleado

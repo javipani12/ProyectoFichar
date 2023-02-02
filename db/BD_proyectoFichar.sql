@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `empresa_v2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `empresa_v2`;
+-- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: empresa_v2
 -- ------------------------------------------------------
@@ -35,7 +37,7 @@ CREATE TABLE `departamentos` (
 
 LOCK TABLES `departamentos` WRITE;
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` (`idDepartamento`, `nombre`) VALUES (1,'Administración'),(2,'Dirección'),(3,'Matemáticas'),(4,'Ciencias'),(5,'Informática');
+INSERT INTO `departamentos` VALUES (1,'Administración'),(2,'Dirección'),(3,'Matemáticas'),(4,'Ciencias'),(5,'Informática');
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +67,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` (`idEmpleado`, `nombre`, `apellidos`, `salario`, `email`, `idDepartamento`, `codigoEmp`) VALUES (1,'admin','admin',5678.23,'admin@a.com',1,1234),(2,'Maria','Farias',1345.69,'lolalolitalola@lola.com',1,4321),(3,'Javier','Fernandez Paniagua',1485,'javier@javier.com',2,5896),(5,'Ana Maria','Herrera Flores',6231,'ana@ana.com',1,1912),(6,'Pedro','Truncado Moreno',1017,'p@p.com',4,1456),(8,'Amanda','Cintero Llano',1520,'a@cl.com',3,3246),(9,'Ramón','Fraile Curado',1017,'rfc@rfc.com',5,7806);
+INSERT INTO `empleados` VALUES (1,'admin','admin',5678.23,'admin@a.com',1,1234),(2,'Maria','Farias',1345.69,'lolalolitalola@lola.com',1,4321),(3,'Javier','Fernandez Paniagua',1485,'javier@javier.com',2,5896),(5,'Ana Maria','Herrera Flores',6231,'ana@ana.com',1,1912),(6,'Pedro','Truncado Moreno',1017,'p@p.com',4,1456),(8,'Amanda','Cintero Llano',1520,'a@cl.com',3,3246),(9,'Ramón','Fraile Curado',1017,'rfc@rfc.com',5,7806);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +87,7 @@ CREATE TABLE `fichar` (
   PRIMARY KEY (`idFicha`),
   KEY `fk_fichar_empleados` (`idEmpleado`),
   CONSTRAINT `fk_fichar_empleados` FOREIGN KEY (`idEmpleado`) REFERENCES `empleados` (`idEmpleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +96,7 @@ CREATE TABLE `fichar` (
 
 LOCK TABLES `fichar` WRITE;
 /*!40000 ALTER TABLE `fichar` DISABLE KEYS */;
-INSERT INTO `fichar` (`idFicha`, `idEmpleado`, `entrada`, `salida`, `fechaFicha`) VALUES (2,1,1,0,'2023-03-02 15:45:22'),(4,2,1,0,'2023-01-31 21:12:58'),(5,2,0,1,'2023-01-31 21:13:12'),(6,2,1,0,'2023-02-01 23:53:00'),(7,2,0,1,'2023-02-01 23:53:02'),(8,2,1,0,'2023-02-02 00:00:26'),(9,2,0,1,'2023-02-02 00:00:28');
+INSERT INTO `fichar` VALUES (2,1,1,0,'2023-03-02 15:45:22'),(4,2,1,0,'2023-01-31 21:12:58'),(5,2,0,1,'2023-01-31 21:13:12'),(6,2,1,0,'2023-02-01 23:53:00'),(7,2,0,1,'2023-02-01 23:53:02'),(8,2,1,0,'2023-02-02 00:00:26'),(9,2,0,1,'2023-02-02 00:00:28'),(10,8,1,0,'2023-02-02 14:04:27'),(11,8,0,1,'2023-02-02 14:04:34');
 /*!40000 ALTER TABLE `fichar` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -107,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-02  1:20:44
+-- Dump completed on 2023-02-02 14:08:14

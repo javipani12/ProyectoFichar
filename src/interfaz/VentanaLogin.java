@@ -13,7 +13,12 @@ import modelos.Empleado;
  * @author Mi Pc
  */
 public class VentanaLogin extends javax.swing.JFrame {
-
+    
+    // Usuarios y códigos para probar
+    // nombre   //  codigo
+    // admin    //  1234
+    // Maria    //  4321
+    
     GestionBD conexion;
     /**
      * Creates new form Login
@@ -410,7 +415,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
-        // Guardamos los valores del nombre y el código
+        // Guardamos los valores del nombre y del código
         String codigo = jTextFieldLoginCodigo.getText();
         String nombre = jTextFieldNombre.getText();
         
@@ -424,23 +429,33 @@ public class VentanaLogin extends javax.swing.JFrame {
                 // Obtenemos el empleado mediante su id
                 Empleado emp = conexion.buscarEmpleado(id);
                 
-                // Si el id es 1, se habrá logueado el admin. Entendemos
-                // que el primer empleado en registrarse es el admin
-                // Al ser el admin, nos lleva a la ventana de gestión
-                if (emp.getIdEmpleado() == 1) {
-                    VentanaGestion ventanaGestion = new VentanaGestion();
-                    JOptionPane.showMessageDialog( null, 
-                            "Te has logueado como " + emp.getNombre());
-                    this.setVisible(false);
-                    ventanaGestion.setVisible(true);
+                // Comprobamos de nuevo si el empleado tiene ese
+                // código y ese nombre, por si se da el caso de que 
+                // dos empleados tengan el mismo nombre y código
+                if (emp.getCodigoEmp() == Integer.parseInt(codigo) && 
+                        emp.getNombre().equals(nombre)) 
+                {
+                    // Si el id es 1, se habrá logueado el admin. Entendemos
+                    // que el primer empleado en registrarse es el admin
+                    // Al ser el admin, nos lleva a la ventana de gestión
+                    if (emp.getIdEmpleado() == 1) {
+                        VentanaGestion ventanaGestion = new VentanaGestion();
+                        JOptionPane.showMessageDialog( null, 
+                                "Te has logueado como " + emp.getNombre());
+                        this.setVisible(false);
+                        ventanaGestion.setVisible(true);
+                    } else {
+                        // En caso de que sea un id diferente de 1, es un
+                        // usuario normal, lo llevamos a la ventana de fichar
+                        VentanaFichar ventanaFichar = new VentanaFichar(emp, conexion);
+                        JOptionPane.showMessageDialog( null, 
+                                "Te has logueado como " + emp.getNombre());
+                        this.setVisible(false);
+                        ventanaFichar.setVisible(true);
+                    }
                 } else {
-                    // En caso de que sea un id diferente de 1, es un
-                    // usuario normal, lo llevamos a la ventana de fichar
-                    VentanaFichar ventanaFichar = new VentanaFichar(emp, conexion);
-                    JOptionPane.showMessageDialog( null, 
-                            "Te has logueado como " + emp.getNombre());
-                    this.setVisible(false);
-                    ventanaFichar.setVisible(true);
+                    JOptionPane.showMessageDialog( null,
+                "Los datos introducidos no coinciden en la Base de Datos");
                 }
             } else {
                 // En caso de que no nos devuelva un id válido, mensaje de error

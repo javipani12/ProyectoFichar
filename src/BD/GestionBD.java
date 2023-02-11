@@ -105,9 +105,9 @@ public class GestionBD {
             ps.setString(1, departamento.getNombre());
             
             // Ejecutamos la sentencia
-            if (ps.execute()) {
-                insertado = true;
-            }
+            ps.execute();
+            insertado = true;
+            
             
             // Nos desconectamos
             desconectar();
@@ -139,9 +139,9 @@ public class GestionBD {
             
             ps.setInt(1, departamento.getIdDepartamento());
             
-            if (ps.execute()) {
-                borrado = ps.execute();
-            }
+            ps.execute();
+            borrado = true;
+            
             
             desconectar();
             
@@ -293,9 +293,9 @@ public class GestionBD {
             ps.setInt(6, empleado.getCodigoEmp());
             
             // Ejecutamos la sentencia
-            if( ps.execute() ) {
-                insertado = true;
-            }
+            ps.execute();
+            insertado = true;
+            
             
             // Nos desconectamos de la BD
             desconectar();
@@ -326,9 +326,9 @@ public class GestionBD {
             
             ps.setInt(1, empleado.getIdEmpleado());
             
-            if (ps.execute()) {
-                borrado = ps.execute();
-            }
+            ps.execute();
+            borrado = true;
+            
             
             desconectar();
             
@@ -468,6 +468,51 @@ public class GestionBD {
     }
     
     /**
+     * Método para buscar un empleado mediante su nombre y apellido
+     * @param empleado - Empleado - Empleado a buscar
+     * @return Empleado - Si encuentra el empleado indicado
+     * nos devuelve todos sus datos, en caso contrario nos devuelve un 
+     * empleado nulo
+     */
+    public Empleado buscarEmpleadoPorNombre(Empleado empleado){
+        
+        Empleado emp = new Empleado();
+        Departamentos depts = new Departamentos();
+        
+        conectar();
+        
+        try {
+            PreparedStatement ps = this.conexion.prepareStatement(
+                    "SELECT * FROM empleados WHERE nombre = ? "
+                            + "AND apellido = ?"
+            );
+            
+            ps.setString(1, empleado.getNombre());
+            ps.setString(2, empleado.getApellido());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                emp.setIdEmpleado(rs.getInt(1));
+                emp.setNombre(rs.getString(2));
+                emp.setApellido(rs.getString(3));
+                emp.setSalario(rs.getFloat(4));
+                emp.setEmail(rs.getString(5));
+                emp.setDpt(depts.getDepartamento(rs.getInt(6)));
+                emp.setCodigoEmp(rs.getInt(7));
+            }
+            
+            desconectar();
+            
+        } catch (SQLException ex) {
+            System.err.println("Se ha producido un error");
+        }
+        
+        return emp;
+        
+    }
+    
+    /**
      * Método para comprobar si el código del Empleado que está intentado
      * loguearse es correcto
      * @param codigo - Código de acceso del Empleado 
@@ -537,9 +582,9 @@ public class GestionBD {
             ps.setTimestamp(2, hora);
             
             // Ejecutamos la sentencia
-            if( ps.execute() ) {
-                insertado = true;
-            }
+            ps.execute();
+            insertado = true;
+            
             
             // Nos desconectamos de la BD
             desconectar();
@@ -676,6 +721,39 @@ public class GestionBD {
         }
         
         return ficha;
+    }
+    
+    /**
+     * Método para borrar una Ficha de la BBDD
+     * @param ficha Ficha - ficha a borrar de la BD
+     * @return - boolean - Retorna true si la ha borrado, en caso contrario
+     * retornará false.
+     */
+    public boolean borrarFicha( Ficha ficha ){
+        
+        boolean borrado = false;
+        
+        conectar();
+        
+        try {
+            PreparedStatement ps = this.conexion.prepareStatement(
+                    "DELETE FROM fichar WHERE idFicha = ?"
+            );
+            
+            ps.setInt(1, ficha.getIdFicha());
+            
+            ps.execute();
+            borrado = true;
+            
+            
+            desconectar();
+            
+        } catch (SQLException ex) {
+            System.err.println("Se ha producido un error al borrar, " + ex.getMessage());
+        }
+        
+        return borrado;
+        
     }
     
     // ------------------ MÉTODO FECHA Y HORA SERVIDOR ---------------//

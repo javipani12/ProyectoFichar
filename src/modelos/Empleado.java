@@ -22,7 +22,7 @@ public class Empleado {
         this.apellido = null;
         this.salario = 0F;
         this.email = null;
-        this.dpt = null;
+        this.dpt = new Departamento();
         this.codigoEmp = -1;
     }
 
